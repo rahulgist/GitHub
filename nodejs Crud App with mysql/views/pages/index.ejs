@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<div class="row" style="margin-left:50px; margin-right:50px; margin-top: 30px;;">
+    <div class="col s12">
+        <a href="/event/add" class="btn btn-success btn-lg">Add a new Event</a>
+    </div>
+</div>
+<br>
+
+<div class="row" style="margin-left:50px; margin-right:50px; margin-top: 30px;;">
+    <div class="col s12">
+        <% if(items.length >0) { %>
+            <table class="table">
+                <thead>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>DESCRIPTION</th>
+                    <th>LOCATION</th>
+                    <th>ACTION</th>
+                </thead>
+                <tbody>
+                    <% items.forEach(function(item, index){ %> 
+                        <tr>
+                            <td><%- index + 1 %></td>
+                            <td><%- item.e_name %></td>
+                            <td><%- item.e_desc %></td>
+                            <td><%- item.e_location %></td>
+                            <td>
+                                <a href="/event/edit/<%- item.e_id %>" class="btn btn-success">Edit</a>
+                                <a href="/event/delete/<%- item.e_id %>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <% }else{ %>
+                <p><strong>There is no record founds available</strong></p>
+          <%  } %>
+    </div>
+</div>
+
+
+
+<%- include ('../partials/footer') %>
